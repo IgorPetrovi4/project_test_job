@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+
+    <div>
+        <div class="container">
+            <h3 class="text-center">Профиль</h3>
+
+
+            <table class="table  table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Пол</th>
+                    <th scope="col">О себе</th>
+                    <th scope="col">Редактировать</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for table in tables %}
+                    <tr>
+                        <th>{{ table.id }}</th>
+                        <td>{{ table.name }} </td>
+                        <td>{{ table.gender }}</td>
+                        <td>{{ table.aboutMe }}</td>
+                        <td><a href="{{ path('edit', { 'id': table.id }) }}">&#9998;</a></td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+            <h3 class="text-center">Список пользователей</h3>
+
+
+            <table class="table  table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for user in users %}
+                    <tr>
+                        <th>{{ user.id }}</th>
+                        <td>{{ user.name }} </td>
+                        <td><a href="{{ path('profile_user', { 'id': user.id }) }}">Посмотреть профиль</a></td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

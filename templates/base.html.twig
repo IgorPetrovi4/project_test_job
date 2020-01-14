@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block stylesheets %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+    {% endblock %}
+
+    <title>{% block title %}TestJobs{% endblock %}</title>
+</head>
+<body>
+
+{% block header %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('home') }}">for ProWeb agency</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('profile') }}">Профиль</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Регистрация</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse  justify-content-end " id="navbarNavDropdown">
+            <ul class="navbar-nav">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li class="nav-item ">
+                <a class="navbar-brand">  {{  app.user.username }}</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                    Выход
+                </a>
+                {% else %}
+                    <a class="nav-link" href="{{ path('fos_user_security_login') }}">Вход</a>
+                {% endif %}
+            </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+<div class="container text-center">
+    {% block body %}  {% endblock %}
+</div>
+{% block footer %}
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; Petrov Igor</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="{{ path('profile') }}">Profile</a></li>
+            <li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+            <li class="list-inline-item"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+        </ul>
+    </footer>
+{% endblock %}
+
+
+{% block javascripts %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>

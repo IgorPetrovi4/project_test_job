@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileEditController!{% endblock %}
+
+{% block body %}
+
+    <h4>{{ info }}</h4>
+
+    <div>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary" type="submit">Отправить</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

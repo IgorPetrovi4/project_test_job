@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileEditController!{% endblock %}
+
+{% block body %}
+
+
+    {% for user in user1 %}
+        <div class="nav-item">
+        <ul class="navbar-nav">
+            <h4>Имя</h4>
+            <li>
+                <p>{{ user.name }} </p>
+            </li>
+            <h4>Email</h4>
+            <li>
+                <p>{{ user.idUser }}</p>
+            </li>
+            <h4>Пол</h4>
+            <li>
+                <p>{{ user.gender }} </p>
+            </li>
+            <h4>О себе</h4>
+            <li>
+                <p>{{ user.aboutMe }} </p>
+            </li>
+        </ul>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
