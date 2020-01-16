@@ -19,4 +19,6 @@ class RoutUserController extends AbstractController
         }
         return $this->redirectToRoute('profile_edit');
     }
+
+
 }
